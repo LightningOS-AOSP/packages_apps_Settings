@@ -824,4 +824,5 @@ public class Settings extends SettingsActivity {
 
     /** Evolution X additions */
     public static class PrivateDnsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class DevRunningServicesActivity extends SettingsActivity { /* empty */ }
 }
