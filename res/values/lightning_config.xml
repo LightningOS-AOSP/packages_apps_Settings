@@ -31,4 +31,7 @@
 
     <!-- Whether to show the search box in the Setup Wizard locale picker. -->
     <bool name="config_show_setuplocalepicker_region_searchbox">true</bool>
+
+    <!-- Whether to show double tap ambient settings -->
+    <bool name="config_supports_double_tap_ambient" translatable="false">true</bool>
 </resources>
