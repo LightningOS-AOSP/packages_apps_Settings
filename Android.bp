@@ -99,6 +99,7 @@ android_library {
         "com.android.webapp.flags-aconfig-exported-java",
         "com_android_server_accessibility_flags_lib",
         "connectivity_flags_lib",
+        "glide",
         "net-utils-framework-common",
         "notification_flags_lib",
         "securebox",
@@ -254,4 +255,9 @@ android_library_import {
     name: "expandable-bottombar",
     aars: ["libs/lib-expandablebottombar-release.aar"],
     sdk_version: "current",
+}
+
+android_library_import {
+    name: "glide",
+    aars: ["libs/glide-4.16.0.aar"],
 }
