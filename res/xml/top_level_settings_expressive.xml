@@ -127,7 +127,16 @@
             android:summary="@string/summary_placeholder"
             settings:highlightableMenuKey="@string/menu_key_storage"
             settings:controller="com.android.settings.deviceinfo.TopLevelStoragePreferenceController"/>
-
+         
+         <com.android.settings.widget.HomepagePreference
+            android:fragment="com.lightning.thunderbolt.ThunderboltDashboard"
+            android:icon="@drawable/ic_settings_thunderbolt"
+            android:key="top_level_thunderbolt"
+            android:order="-5"
+            android:title="@string/thunderbolt_dashboard_title"
+            android:summary="@string/thunderbolt_summary_title"
+            settings:controller="com.lightning.thunderbolt.TopLevelThunderboltEntryPreferenceController" />
+            
         <com.android.settings.widget.HomepagePreference
             android:fragment="com.android.settings.fuelgauge.batteryusage.PowerUsageSummary"
             android:icon="@drawable/ic_homepage_battery"

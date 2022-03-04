@@ -49,6 +49,15 @@
             android:summary="@string/connected_devices_dashboard_default_summary"
             settings:highlightableMenuKey="@string/menu_key_connected_devices"
             settings:controller="com.android.settings.connecteddevice.TopLevelConnectedDevicesPreferenceController"/>
+            
+        <com.android.settings.widget.HomepagePreference
+        android:key="top_level_thunderbolt"
+        android:title="@string/thunderbolt_dashboard_title"
+        android:summary="@string/thunderbolt_summary_title"
+        android:icon="@drawable/ic_settings_thunderbolt"
+        android:order="-5"
+        android:fragment="com.lightning.thunderbolt.ThunderboltDashboard"
+        settings:controller="com.lightning.thunderbolt.TopLevelThunderboltEntryPreferenceController" />
     </PreferenceCategory>
 
     <PreferenceCategory

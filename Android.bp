@@ -55,6 +55,8 @@ android_library {
     srcs: [
         "src/**/*.java",
         "src/**/*.kt",
+        "Thunderbolt/src/**/*.java",
+        "Thunderbolt/src/**/*.kt",
     ],
     exclude_srcs: [
         "src/com/android/settings/biometrics/fingerprint2/lib/**/*.kt",
@@ -65,7 +67,13 @@ android_library {
         "res",
         "res-export", // for external usage
         "res-product",
+        "Thunderbolt/res",
     ],
+    
+    aaptflags: ["--extra-packages com.lightning.thunderbolt",
+                "--extra-packages github.com.st235.lib_expandablebottombar",
+    ],
+    
     optional_uses_libs: ["com.android.extensions.appfunctions"],
     static_libs: [
         // External dependencies
@@ -120,7 +128,15 @@ android_library {
         "settings_connectivity_flags_lib",
         "Spa-search",
         "SettingsInterfaceLib",
-
+        "expandable-bottombar",
+        "androidx.navigation_navigation-common-ktx",
+        "androidx.navigation_navigation-fragment-ktx",
+        "androidx.navigation_navigation-runtime-ktx",
+        "androidx.navigation_navigation-ui-ktx",
+        "kotlin-stdlib",
+        "kotlinx_coroutines_android",
+        "kotlinx_coroutines",
+        
         // app function dependencies
         "androidx.appsearch_appsearch",
         "androidx.appsearch_appsearch-builtin-types",
@@ -231,4 +247,10 @@ android_library_import {
 filegroup {
     name: "Settings_proguard_flags",
     srcs: ["proguard.flags"],
+}
+
+android_library_import {
+    name: "expandable-bottombar",
+    aars: ["libs/lib-expandablebottombar-release.aar"],
+    sdk_version: "current",
 }
