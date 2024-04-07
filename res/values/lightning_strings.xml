@@ -5,8 +5,17 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
+    <!-- Device Info screen. LightningOS legal. -->
+    <string name="lightning_license_title">LightningOS legal</string>
+
+    <!-- Android version screen, build maintainer -->
+    <string name="build_maintainer">Build maintainer</string>
+    <string name="build_maintainer_summary" translatable="false">Unknown</string>
+    <string name="build_maintainer_donate_url" translatable="false">https://paypal.me/atlantisos</string>
 
     <!-- Hardware info -->
+    <string name="device_market_name">Market Name</string>
     <string name="soc_model">SoC Model</string>
     <string name="total_ram">Total RAM</string>
 </resources>
