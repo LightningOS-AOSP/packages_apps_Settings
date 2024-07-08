@@ -57,6 +57,7 @@ android_library {
         "src/**/*.kt",
         "Thunderbolt/src/**/*.java",
         "Thunderbolt/src/**/*.kt",
+        "src/**/*.aidl",
     ],
     exclude_srcs: [
         "src/com/android/settings/biometrics/fingerprint2/lib/**/*.kt",
