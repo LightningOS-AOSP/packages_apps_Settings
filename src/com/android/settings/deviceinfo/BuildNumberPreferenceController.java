@@ -71,7 +71,31 @@ public class BuildNumberPreferenceController extends BasePreferenceController im
     private int mDevHitCountdown;
     private boolean mProcessingLastDevHit;
 
-    public final static java.lang.String[] insults = {
+public final static java.lang.String[] insults = {
+            "LightningOS > your personality",
+            "THUNDER TIME!",
+            "Fear the bolt",
+            "You flash ROMs more than you shower",
+            "Maybe clean your room first?",
+            "Nice ROM, still no friends",
+            "Your phone is stable you are not",
+            "Dirty flash, dirty life",
+            "More updates, same boring you",
+            "Struck by lightning twice, still no personality",
+            "Fast ROM, slow reflexes",
+            "Your battery drains faster than your social life",
+            "Thunder loud, but your excuses are louder",
+            "Zero latency, infinite excuses",
+            "Bootloop? That is just your personality",
+            "Flash it again, maybe it will fix you too",
+            "Powered by lightning, held back by you",
+            "Strike fast, run smooth. Unlike you",
+            "Full Wi-Fi bars, zero friends",
+            "Charging at 100W and still going nowhere",
+            "Static shock is the only spark in your life",
+            "Your uptime is better than your sleep schedule",
+            "Thunderstruck? More like confused",
+            "Bolt fast, think slow",
             "Hahaha, n00b!",
             "What are you doing??",
             "n00b alert!",
@@ -84,12 +108,11 @@ public class BuildNumberPreferenceController extends BasePreferenceController im
             "Pro tip: Stop doing this",
             "Perhaps this Android thing is not for you...",
             "Don't you have anything better to do?",
-            "Looks like you're evolving... Just BACKWARDS!",
+            "You're evolving... Just BACKWARDS!",
             "This won't make you look cooler to your friends",
             "Go back to your stock ROM",
             "FBI! OPEN UP!",
             "Would you prefer iOS next time?",
-            "We should hack your device just for this",
     };
 
     public BuildNumberPreferenceController(Context context, String key) {
