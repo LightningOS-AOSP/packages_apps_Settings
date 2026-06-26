@@ -13,6 +13,11 @@
     <string name="build_maintainer">Build maintainer</string>
     <string name="build_maintainer_summary" translatable="false">Unknown</string>
     <string name="build_maintainer_donate_url" translatable="false">https://paypal.me/atlantisos</string>
+    
+    <!-- About phone screen, LightningOS version -->
+    <string name="lightning_version">LightningOS version</string>
+    <string name="lightning_version_default">Unknown</string>
+    <string name="keywords_lightning_version">LightningOS version, lightning version</string>
 
     <!-- Hardware info -->
     <string name="device_name">Device | Model</string>

@@ -30,6 +30,14 @@
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
+    <!-- LightningOS version -->
+    <Preference
+        android:key="lightning_version"
+        android:title="@string/lightning_version"
+        android:summary="@string/summary_placeholder"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.LightningVersionPreferenceController"/>
+
     <!-- Device name -->
     <Preference
         android:key="about_device_name"
