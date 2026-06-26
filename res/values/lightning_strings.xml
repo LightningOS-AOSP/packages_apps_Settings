@@ -18,6 +18,9 @@
     <string name="lightning_version">LightningOS version</string>
     <string name="lightning_version_default">Unknown</string>
     <string name="keywords_lightning_version">LightningOS version, lightning version</string>
+    
+    <!-- LightningOS  Maintainer -->
+    <string name="LightningOS_maintainer">LightningOS Maintainer</string>
 
     <!-- Hardware info -->
     <string name="device_name">Device | Model</string>
