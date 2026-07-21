@@ -26,6 +26,13 @@
         android:layout="@layout/settings_entity_header"
         android:selectable="false"
         settings:isPreferenceVisible="false"/>
+    
+    <!-- Lightning logo -->
+    <com.android.settingslib.widget.LayoutPreference
+        android:layout="@layout/lightning_logo"
+        android:key="mist_logo"
+        android:order="-999"
+        android:selectable="false" />
 
     <PreferenceCategory
         android:key="basic_info_category"
