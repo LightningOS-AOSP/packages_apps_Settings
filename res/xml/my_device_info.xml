@@ -24,7 +24,7 @@
     <!-- Lightning logo -->
     <com.android.settingslib.widget.LayoutPreference
         android:layout="@layout/lightning_logo"
-        android:key="mist_logo"
+        android:key="lightning_logo"
         android:order="-999"
         android:selectable="false" />
 
