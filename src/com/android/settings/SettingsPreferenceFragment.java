@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,8 @@ import com.android.settingslib.preference.PreferenceScreenBindingHelper;
 import com.android.settingslib.preference.PreferenceScreenCreator;
 import com.android.settingslib.search.Indexable;
 import com.android.settingslib.widget.LayoutPreference;
+
+import com.lightning.thunderbolt.ThunderboltTheme;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.setupcompat.util.WizardManagerHelper;
@@ -176,8 +179,19 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
     @Override
     public RecyclerView onCreateRecyclerView(@NonNull LayoutInflater inflater,
             @NonNull ViewGroup parent, @Nullable Bundle savedInstanceState) {
+        LayoutInflater themedInflater = inflater;
+        if (appliesLightningStyle()) {
+            // Wrap the inflater's context with the default Thunderbolt accent overlay so that
+            // rows inflated from this RecyclerView resolve thunderboltAccent etc.
+            Context accentContext = new ContextThemeWrapper(inflater.getContext(),
+                    ThunderboltTheme.getDefaultAccentOverlay());
+            themedInflater = inflater.cloneInContext(accentContext);
+        }
         RecyclerView recyclerView =
-                super.onCreateRecyclerView(inflater, parent, savedInstanceState);
+                super.onCreateRecyclerView(themedInflater, parent, savedInstanceState);
+        if (appliesLightningStyle()) {
+            recyclerView.setClipToPadding(false);
+        }
         recyclerView.setFocusable(false);
         return AccessibilityFragmentUtils.addCollectionInfoToAccessibilityDelegate(recyclerView);
     }
@@ -186,6 +200,59 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
     public void addPreferencesFromResource(@XmlRes int preferencesResId) {
         super.addPreferencesFromResource(preferencesResId);
         checkAvailablePrefs(getPreferenceScreen());
+        restyleForLightning();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (appliesLightningStyle()) {
+            // Preferences added at runtime (dashboard refreshes, the Modes list, ...) miss the
+            // walker in addPreferencesFromResource; restyle right before the screen is drawn so
+            // every row gets the Thunderbolt layouts.
+            view.post(this::restyleForLightning);
+        }
+    }
+
+    /**
+     * Applies the Thunderbolt row/category layouts to this screen when Lightning layout style is
+     * active. Safe to run multiple times: layouts that are already correct are left untouched.
+     */
+    private void restyleForLightning() {
+        if (!appliesLightningStyle() || getListView() == null) {
+            return;
+        }
+        final int changed = ThunderboltTheme.applySubScreenTheme(getPreferenceScreen());
+        if (changed > 0) {
+            final RecyclerView.Adapter<?> adapter = getListView().getAdapter();
+            if (adapter != null) {
+                adapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+    /**
+     * Whether this screen should be restyled to the Thunderbolt look because the user has
+     * Lightning layout style enabled. Screens that already manage their own Thunderbolt
+     * styling (sub-settings, dashboard) override this to opt out.
+     */
+    protected boolean appliesLightningStyle() {
+        return !isThunderboltStyledScreen() && ThunderboltTheme.isLightning(requireContext());
+    }
+
+    /**
+     * Screens that already provide their own Thunderbolt styling must not be re-themed
+     * by the generic Lightning style hook.
+     */
+    protected boolean isThunderboltStyledScreen() {
+        return false;
+    }
+
+    @Override
+    protected boolean isPreferenceSpacingEnabled() {
+        // When Lightning style is active, generic screens become flush like Thunderbolt
+        // screens (no expressive spacing). Thunderbolt screens already disable it themselves.
+        return !appliesLightningStyle();
     }
 
     @VisibleForTesting

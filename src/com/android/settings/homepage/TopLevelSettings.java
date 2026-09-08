@@ -361,6 +361,16 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         return new RoundCornerPreferenceAdapter(preferenceScreen);
     }
 
+    /**
+     * The homepage tiles are restyled to the Thunderbolt look through
+     * {@code HomepagePreferenceLayoutHelper}; the generic Lightning style hook must not
+     * re-theme the homepage or override its row layouts.
+     */
+    @Override
+    protected boolean isThunderboltStyledScreen() {
+        return true;
+    }
+
     @Override
     protected Preference createPreference(Tile tile) {
         return new HomepagePreference(getPrefContext());

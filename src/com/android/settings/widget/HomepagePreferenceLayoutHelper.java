@@ -17,6 +17,7 @@
 package com.android.settings.widget;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.preference.Preference;
@@ -26,8 +27,14 @@ import com.android.settings.R;
 import com.android.settings.flags.Flags;
 import com.android.settingslib.widget.SettingsThemeHelper;
 
+import com.lightning.thunderbolt.ThunderboltTheme;
+
 /** Helper for homepage preference to manage layout. */
 public class HomepagePreferenceLayoutHelper {
+
+    private final boolean mIsLightning;
+    private final Preference mPreference;
+    private final String mPreferenceKey;
 
     private View mIcon;
     private View mText;
@@ -47,6 +54,14 @@ public class HomepagePreferenceLayoutHelper {
     }
 
     public HomepagePreferenceLayoutHelper(Preference preference) {
+        mPreference = preference;
+        mIsLightning = ThunderboltTheme.isLightning(preference.getContext());
+        mPreferenceKey = preference.getKey();
+        if (mIsLightning) {
+            // Lightning layout style: every Settings homepage tile becomes a Thunderbolt row.
+            preference.setLayoutResource(R.layout.homepage_preference_thunderbolt);
+            return;
+        }
         preference.setLayoutResource(
                 SettingsThemeHelper.isExpressiveTheme(preference.getContext())
                         ? R.layout.homepage_preference_expressive
@@ -111,6 +126,20 @@ public class HomepagePreferenceLayoutHelper {
         mAlertUnnumbered = holder.findViewById(R.id.alert_unnumbered);
         mAlertNumberedFrame = holder.findViewById(R.id.alert_numbered_frame);
         mAlertNumberText = (TextView) holder.findViewById(R.id.alert_number_fg);
+        if (mIsLightning) {
+            // Swap in the Thunderbolt icon set for the tile this row belongs to.
+            final ImageView iconView = (ImageView) holder.findViewById(android.R.id.icon);
+            if (iconView != null) {
+                int res = ThunderboltTheme.getHomeIconRes(mPreferenceKey);
+                if (res == 0) {
+                    res = ThunderboltTheme.getHomeIconResByFragment(
+                            mPreference.getFragment());
+                }
+                if (res != 0) {
+                    iconView.setImageResource(res);
+                }
+            }
+        }
         setIconVisible(mIconVisible);
         setIconPaddingStart(mIconPaddingStart);
         setTextPaddingStart(mTextPaddingStart);
