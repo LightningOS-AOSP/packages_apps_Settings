@@ -27,6 +27,13 @@
         android:selectable="false"
         settings:isPreferenceVisible="false"/>
 
+    <!-- Lightning logo -->
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="lightning_logo"
+        android:layout="@layout/lightning_logo"
+        android:order="-999"
+        android:selectable="false" />
+
     <PreferenceCategory
         android:key="basic_info_category"
         android:selectable="false"
