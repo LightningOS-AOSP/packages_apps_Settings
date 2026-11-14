@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vl_blue_chip">#A1C9FF</color>
+    <color name="vl_blue_glyph">#04409F</color>
+    <color name="vl_pink_chip">#FFAEE4</color>
+    <color name="vl_pink_glyph">#8D0053</color>
+    <color name="vl_cyan_chip">#60D5F3</color>
+    <color name="vl_cyan_glyph">#004E5D</color>
+    <color name="vl_green_chip">#80DA88</color>
+    <color name="vl_green_glyph">#00522C</color>
+    <color name="vl_yellow_chip">#FCBD00</color>
+    <color name="vl_yellow_glyph">#6D3A01</color>
+    <color name="vl_purple_chip">#D9BAFD</color>
+    <color name="vl_purple_glyph">#5629A4</color>
+    <color name="vl_volt_chip">#E6FF57</color>
+    <color name="vl_volt_glyph">#2B3300</color>
+    <color name="vl_red_chip">#FFB3AE</color>
+    <color name="vl_red_glyph">#8A1A16</color>
+</resources>

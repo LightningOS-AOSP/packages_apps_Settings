@@ -28,14 +28,21 @@ import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.ApplicationInfoFlags;
 import android.content.pm.UserInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.BatteryManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.storage.VolumeInfo;
+import android.os.Environment;
 import android.os.Process;
+import android.os.StatFs;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.text.TextUtils;
@@ -46,10 +53,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.VisibleForTesting;
-import androidx.core.graphics.Insets;
-import androidx.core.util.Consumer;
+import androidx.core.graphics.Insets;import androidx.core.util.Consumer;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -71,6 +79,7 @@ import com.android.settings.activityembedding.ActivityEmbeddingRulesController;
 import com.android.settings.activityembedding.ActivityEmbeddingUtils;
 import com.android.settings.activityembedding.EmbeddedDeepLinkUtils;
 import com.android.settings.core.CategoryMixin;
+import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.core.FeatureFlags;
 import com.android.settings.flags.Flags;
 import com.android.settings.homepage.contextualcards.ContextualCardsFragment;
@@ -83,14 +92,21 @@ import com.android.settingslib.widget.SettingsThemeHelper;
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /** Settings homepage activity */
 public class SettingsHomepageActivity extends FragmentActivity implements
         CategoryMixin.CategoryHandler {
 
     private static final String TAG = "SettingsHomepageActivity";
+
+    private ExecutorService mPulseExecutor;
 
     // Additional extra of Settings#ACTION_SETTINGS_LARGE_SCREEN_DEEP_LINK.
     // Put true value to the intent when startActivity for a deep link intent from this Activity.
@@ -254,6 +270,8 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         setupEdgeToEdge();
         setContentView(R.layout.settings_homepage_container);
+        setupThunderboltCard();
+        setupPulseCard();
 
         mIsTwoPane = ActivityEmbeddingUtils.isAlreadyEmbedded(this);
 
@@ -400,7 +418,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
                     // plus insets top.
                     View container = findViewById(R.id.app_bar_container);
                     final int top_padding = getResources().getDimensionPixelSize(
-                            R.dimen.search_bar_container_top_padding);
+                            R.dimen.vl_header_top_padding);
                     container.setPadding(container.getPaddingLeft(), top_padding + insets.top,
                             container.getPaddingRight(), container.getPaddingBottom());
 
@@ -408,6 +426,156 @@ public class SettingsHomepageActivity extends FragmentActivity implements
                     // passed down to descendant views.
                     return WindowInsetsCompat.CONSUMED;
                 });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshPulseCard();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPulseExecutor != null) {
+            mPulseExecutor.shutdownNow();
+            mPulseExecutor = null;
+        }
+    }
+
+    private void setupThunderboltCard() {
+        final View card = findViewById(R.id.vl_thunderbolt_strip);
+        if (card == null) {
+            return;
+        }
+        card.setOnClickListener(v -> {
+            final Intent intent = new Intent(this, Settings.ThunderboltSettingsActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void setupPulseCard() {
+        final View card = findViewById(R.id.vl_pulse_card);
+        if (card == null) {
+            return;
+        }
+
+        final TextView device = findViewById(R.id.vl_pulse_device);
+        if (device != null) {
+            final String custom = SystemProperties.get("ro.lightning.device.name", "");
+            device.setText(TextUtils.isEmpty(custom) ? Build.MODEL : custom);
+        }
+
+        final TextView version = findViewById(R.id.vl_pulse_version);
+        if (version != null) {
+            final String base = SystemProperties.get("ro.lightning.version.base", "");
+            if (TextUtils.isEmpty(base)) {
+                version.setVisibility(View.GONE);
+            } else {
+                version.setText(getString(R.string.vl_pulse_version_fmt, base));
+            }
+        }
+
+        final View batteryColumn = findViewById(R.id.vl_pulse_battery_col);
+        if (batteryColumn != null) {
+            batteryColumn.setOnClickListener(v -> launchDestination(
+                    "com.android.settings.fuelgauge.batteryusage.PowerUsageSummary",
+                    R.string.power_usage_summary_title));
+        }
+        final View storageColumn = findViewById(R.id.vl_pulse_storage_col);
+        if (storageColumn != null) {
+            storageColumn.setOnClickListener(v -> launchStorage());
+        }
+        final View patchColumn = findViewById(R.id.vl_pulse_patch_col);
+        if (patchColumn != null) {
+            patchColumn.setOnClickListener(v -> launchDestination(
+                    "com.android.settings.deviceinfo.aboutphone.MyDeviceInfoFragment",
+                    R.string.about_settings));
+        }
+    }
+
+    private void launchStorage() {
+        final Bundle args = new Bundle();
+        args.putString(VolumeInfo.EXTRA_VOLUME_ID, VolumeInfo.ID_PRIVATE_INTERNAL);
+        new SubSettingLauncher(this)
+                .setDestination("com.android.settings.deviceinfo.StorageDashboardFragment")
+                .setArguments(args)
+                .setTitleRes(R.string.storage_settings)
+                .setSourceMetricsCategory(SettingsEnums.SETTINGS_HOMEPAGE)
+                .launch();
+    }
+
+    private void launchDestination(String className, int titleRes) {
+        new SubSettingLauncher(this)
+                .setDestination(className)
+                .setTitleRes(titleRes)
+                .setSourceMetricsCategory(SettingsEnums.SETTINGS_HOMEPAGE)
+                .launch();
+    }
+
+    private void refreshPulseCard() {
+        final TextView batteryValue = findViewById(R.id.vl_pulse_battery_value);
+        final ProgressBar batteryBar = findViewById(R.id.vl_pulse_battery_bar);
+        if (batteryValue != null && batteryBar != null) {
+            final Intent status = registerReceiver(null,
+                    new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+            if (status != null) {
+                final int level = status.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+                final int scale = status.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+                if (level >= 0 && scale > 0) {
+                    final int percent = Math.round(level * 100f / scale);
+                    batteryValue.setText(getString(R.string.vl_pulse_percent_fmt, percent));
+                    batteryBar.setProgress(percent);
+                }
+            }
+        }
+
+        final TextView patchValue = findViewById(R.id.vl_pulse_patch_value);
+        final TextView patchSub = findViewById(R.id.vl_pulse_patch_sub);
+        if (patchValue != null && patchSub != null) {
+            final String raw = Build.VERSION.SECURITY_PATCH;
+            String date = getString(R.string.vl_placeholder);
+            String year = "";
+            if (!TextUtils.isEmpty(raw)) {
+                try {
+                    final Date parsed = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(raw);
+                    if (parsed != null) {
+                        date = new SimpleDateFormat("MMM d", Locale.getDefault()).format(parsed);
+                        year = new SimpleDateFormat("yyyy", Locale.getDefault()).format(parsed);
+                    }
+                } catch (java.text.ParseException e) {
+                    Log.w(TAG, "Unable to parse the security patch date", e);
+                }
+            }
+            patchValue.setText(date);
+            patchSub.setText(TextUtils.isEmpty(year)
+                    ? "" : getString(R.string.vl_pulse_patch_sub_fmt, year));
+        }
+
+        final TextView storageValue = findViewById(R.id.vl_pulse_storage_value);
+        final TextView storageTotal = findViewById(R.id.vl_pulse_storage_total);
+        final ProgressBar storageBar = findViewById(R.id.vl_pulse_storage_bar);
+        if (storageValue == null || storageTotal == null || storageBar == null) {
+            return;
+        }
+        if (mPulseExecutor == null) {
+            mPulseExecutor = Executors.newSingleThreadExecutor();
+        }
+        mPulseExecutor.execute(() -> {
+            final StatFs stat = new StatFs(Environment.getDataDirectory().getAbsolutePath());
+            final long total = stat.getTotalBytes();
+            final long available = stat.getAvailableBytes();
+            final long used = Math.max(0, total - available);
+            final int percent = total > 0 ? Math.round(used * 100f / total) : 0;
+            final String usedGb = String.format(Locale.getDefault(), "%.1f", used / 1073741824d);
+            final String totalGb = String.format(Locale.getDefault(), "%d",
+                    Math.round(total / 1073741824d));
+            runOnUiThread(() -> {
+                storageValue.setText(usedGb);
+                storageTotal.setText(getString(R.string.vl_pulse_storage_total_fmt, totalGb));
+                storageBar.setProgress(percent);
+            });
+        });
     }
 
     private void initSearchBarView() {
@@ -438,10 +606,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-        // Update content background.
         findViewById(android.R.id.content).setBackgroundColor(color);
-        //Update search bar background
-        findViewById(R.id.app_bar_container).setBackgroundColor(color);
     }
 
     private void showSuggestionFragment(boolean scrollNeeded) {

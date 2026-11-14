@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vl_bg">#131217</color>
+    <color name="vl_card">#1E1C22</color>
+    <color name="vl_search">#2B2930</color>
+    <color name="vl_tonal">#2B2930</color>
+    <color name="vl_text">#E6E1E9</color>
+    <color name="vl_text_2">#B7B1C2</color>
+    <color name="vl_ink">#1D1B20</color>
+    <color name="vl_on_ink">#F5F1F7</color>
+    <color name="vl_on_ink_2">#B7B1C2</color>
+    <color name="vl_ink_track">#3A3740</color>
+    <color name="vl_volt">#E6FF57</color>
+    <color name="vl_on_volt">#2B3300</color>
+    <color name="vl_on_volt_2">#3C4500</color>
+    <color name="vl_zone_connection">#A1C9FF</color>
+    <color name="vl_zone_personalize">#FFAEE4</color>
+    <color name="vl_zone_system">#60D5F3</color>
+    <color name="vl_zone_security">#80DA88</color>
+    <color name="vl_zone_support">#FCBD00</color>
+    <color name="vl_zone_specs">#D9BAFD</color>
+    <color name="vl_ripple">#33FFFFFF</color>
+    <color name="vl_selinux_permissive_text">#8A1A16</color>
+</resources>

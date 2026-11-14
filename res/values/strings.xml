@@ -31,6 +31,27 @@
 
     <!-- Device Info screen. Used for a status item's value when the proper value is not known -->
     <string name="device_info_default">Unknown</string>
+    <string name="about_field_processor">Processor</string>
+    <string name="about_field_chipset">Chipset</string>
+    <string name="about_field_ram">RAM</string>
+    <string name="about_field_screen">Screen</string>
+    <string name="about_label_device_model">Device Model</string>
+    <string name="about_label_android_version">Android Version</string>
+    <string name="about_label_lightning_version">Lightning Version</string>
+    <string name="about_label_build_number">Build Number</string>
+    <string name="about_label_security_update">Security Update</string>
+    <string name="about_label_kernel">Kernel</string>
+    <string name="about_label_selinux">SELinux Status</string>
+    <string name="about_label_base_band">Base Band</string>
+    <string name="about_label_ip_address">IP Address</string>
+    <string name="about_label_mac_address">Wi-Fi MAC Address</string>
+    <string name="about_label_uptime">Up Time</string>
+    <string name="about_label_more_info">More Info</string>
+    <string name="about_label_maintainer">Maintainer</string>
+    <string name="about_more_info_summary">Build details and device info</string>
+    <string name="about_dialog_ok">OK</string>
+    <string name="selinux_enforcing">Enforcing</string>
+    <string name="selinux_permissive">Permissive</string>
     <!-- String for removal of sensitive info on about, depending on tap -->
     <string name="device_info_protected_single_press">Tap to show info</string>
     <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
@@ -15597,4 +15618,51 @@
     <!-- Search keywords for Human interface device access setting -->
     <string name="keywords_access_hid">hid, human, access, device</string>
     <!-- Access HID end -->
+    <string name="dash_brand_title">Thunderbolt</string>
+    <string name="vl_eyebrow">LightningOS</string>
+    <string name="vl_home_title">Settings</string>
+    <string name="vl_brand_summary">Lightning up your Device</string>
+    <string name="vl_pulse_battery">Battery</string>
+    <string name="vl_pulse_storage">Storage</string>
+    <string name="vl_pulse_patch">Patch</string>
+    <string name="vl_placeholder">--</string>
+    <string name="vl_pulse_version_fmt">LightningOS %1$s</string>
+    <string name="vl_pulse_percent_fmt">%1$d%%</string>
+    <string name="vl_pulse_patch_sub_fmt">%1$s · up to date</string>
+    <string name="vl_pulse_storage_total_fmt"> / %1$s GB</string>
+    <string name="vl_zone_connection">Connection</string>
+    <string name="vl_zone_personalize">Personalize</string>
+    <string name="vl_zone_system">System</string>
+    <string name="vl_zone_security">Security</string>
+    <string name="vl_zone_support">Support</string>
+    <string name="vl_about_this_device">This device</string>
+    <string name="vl_about_rename">Rename device</string>
+    <string name="vl_about_specs">Specs</string>
+    <string name="vl_about_software">Software</string>
+    <string name="vl_about_network">Network</string>
+    <string name="vl_about_processor">Processor</string>
+    <string name="vl_about_platform">Platform</string>
+    <string name="vl_about_memory">Memory</string>
+    <string name="vl_about_screen">Screen</string>
+    <string name="vl_about_battery_tile">Battery</string>
+    <string name="vl_about_display_tile">Display</string>
+    <string name="vl_about_camera_tile">Camera</string>
+    <string name="vl_about_android_version">Android version</string>
+    <string name="vl_about_security_patch">Security patch</string>
+    <string name="vl_about_kernel">Kernel</string>
+    <string name="vl_about_build">Build number</string>
+    <string name="vl_about_selinux">SELinux</string>
+    <string name="vl_about_maintainer">Maintainer</string>
+    <string name="vl_about_baseband">Baseband</string>
+    <string name="vl_about_ip">IP address</string>
+    <string name="vl_about_mac">MAC address</string>
+    <string name="vl_about_uptime">Uptime</string>
+    <string name="vl_about_more">More info</string>
+    <string name="vl_about_android_fmt">Android %1$s</string>
+    <string name="vl_about_android_version_fmt">Android %1$s · LightningOS %2$s</string>
+    <string name="vl_about_camera_fmt">%1$s · front %2$s</string>
+    <string name="vl_about_copied">Copied to the clipboard</string>
+    <string name="vl_about_front">front</string>
+    <string name="thunderbolt_dashboard_title">Thunderbolt Control Center</string>
+    <string name="thunderbolt_summary_title">Lightning up your Device</string>
 </resources>

@@ -6448,7 +6448,7 @@
         <!-- This is the longest AndroidManifest.xml ever. -->
 
          <!-- LightningOS additions -->
-        <activity android:name=".Settings$LightningThunderboltSettingsActivity"
+        <activity android:name=".Settings$ThunderboltSettingsActivity"
                   android:label="@string/thunderbolt_dashboard_title"
                   android:icon="@drawable/ic_homepage_thunderbolt"
                   android:exported="true"

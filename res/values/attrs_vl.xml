@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ChamferFrameLayout">
+        <attr name="chamferCorner">
+            <enum name="tl" value="0" />
+            <enum name="tr" value="1" />
+            <enum name="br" value="2" />
+            <enum name="bl" value="3" />
+        </attr>
+        <attr name="chamferSize" format="dimension" />
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="fillColor" format="color" />
+    </declare-styleable>
+</resources>

@@ -17,12 +17,20 @@
 package com.android.settings.widget;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.RippleDrawable;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.TypedValue;
+import android.view.View;
 
 import androidx.preference.Preference;
+import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceViewHolder;
 
+import com.android.settings.R;
 import com.android.settings.flags.Flags;
 import com.android.settingslib.drawer.EntriesProvider;
 
@@ -57,6 +65,46 @@ public class HomepagePreference extends Preference implements
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
         mHelper.onBindViewHolder(holder);
+        applyGroupBackground(holder.itemView);
+    }
+
+    private void applyGroupBackground(View itemView) {
+        final Context context = getContext();
+        final PreferenceGroup parent = getParent();
+        int index = 0;
+        int count = 1;
+        if (parent != null) {
+            int visible = 0;
+            for (int i = 0; i < parent.getPreferenceCount(); i++) {
+                final Preference sibling = parent.getPreference(i);
+                if (sibling == this) {
+                    index = visible;
+                }
+                if (sibling.isVisible()) {
+                    visible++;
+                }
+            }
+            count = visible;
+        }
+        final boolean first = index == 0;
+        final boolean last = index == count - 1;
+        final float outer = context.getResources().getDimension(R.dimen.vl_group_radius_outer);
+        final float inner = context.getResources().getDimension(R.dimen.vl_group_radius_inner);
+        final float top = first ? outer : inner;
+        final float bottom = last ? outer : inner;
+
+        final GradientDrawable shape = new GradientDrawable();
+        shape.setShape(GradientDrawable.RECTANGLE);
+        shape.setColor(context.getColor(R.color.vl_card));
+        shape.setCornerRadii(new float[] {
+                top, top, top, top, bottom, bottom, bottom, bottom });
+
+        final int gap = Math.round(context.getResources().getDisplayMetrics().density);
+        final int side = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                16f, context.getResources().getDisplayMetrics()));
+        final RippleDrawable ripple = new RippleDrawable(
+                ColorStateList.valueOf(context.getColor(R.color.vl_ripple)), shape, shape);
+        itemView.setBackground(new InsetDrawable(ripple, side, gap, side, gap));
     }
 
     @Override
