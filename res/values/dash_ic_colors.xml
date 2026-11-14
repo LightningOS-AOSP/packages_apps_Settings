@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dash_ic_blue_bg">#A1C9FF</color>
+    <color name="dash_ic_blue_fg">#04409F</color>
+    <color name="dash_ic_sky_bg">#67D4FF</color>
+    <color name="dash_ic_sky_fg">#004D68</color>
+    <color name="dash_ic_cyan_bg">#60D5F3</color>
+    <color name="dash_ic_cyan_fg">#004E5D</color>
+    <color name="dash_ic_pink_bg">#FFAEE4</color>
+    <color name="dash_ic_pink_fg">#8D0053</color>
+    <color name="dash_ic_orange_bg">#FFB683</color>
+    <color name="dash_ic_orange_fg">#753403</color>
+    <color name="dash_ic_yellow_bg">#FCBD00</color>
+    <color name="dash_ic_yellow_fg">#6D3A01</color>
+    <color name="dash_ic_green_bg">#80DA88</color>
+    <color name="dash_ic_green_fg">#00522C</color>
+    <color name="dash_ic_gray_bg">#C7C7C7</color>
+    <color name="dash_ic_gray_fg">#474747</color>
+    <color name="dash_ic_red_bg">#FFB3AE</color>
+    <color name="dash_ic_red_fg">#8A1A16</color>
+    <color name="dash_ic_purple_bg">#D9BAFD</color>
+    <color name="dash_ic_purple_fg">#5629A4</color>
+    <color name="dash_ic_volt_bg">#E6FF57</color>
+    <color name="dash_ic_volt_fg">#2B3300</color>
+</resources>

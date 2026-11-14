@@ -438,10 +438,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
-        // Update content background.
         findViewById(android.R.id.content).setBackgroundColor(color);
-        //Update search bar background
-        findViewById(R.id.app_bar_container).setBackgroundColor(color);
     }
 
     private void showSuggestionFragment(boolean scrollNeeded) {

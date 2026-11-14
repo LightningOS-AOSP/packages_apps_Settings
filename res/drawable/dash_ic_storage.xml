@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path
+        android:fillColor="@color/dash_ic_yellow_bg"
+        android:pathData="M24,24m-24,0a24,24 0,1 1,48 0a24,24 0,1 1,-48 0" />
+    <group
+        android:scaleX="0.029167"
+        android:scaleY="0.029167"
+        android:translateX="10"
+        android:translateY="38">
+        <path
+            android:fillColor="@color/dash_ic_yellow_fg"
+            android:pathData="M194-160q-30.52 0-52.26-21.5T120-234q0-31 21.74-52.5T194-308h572q30.53 0 52.26 21.5Q840-265 840-234t-21.74 52.5Q796.53-160 766-160H194Zm0-492q-30.52 0-52.26-21.5T120-726q0-31 21.74-52.5T194-800h572q30.53 0 52.26 21.5Q840-757 840-726t-21.74 52.5Q796.53-652 766-652H194Zm0 246q-30.52 0-52.26-21.5T120-480q0-31 21.74-52.5T194-554h572q30.53 0 52.26 21.5Q840-511 840-480t-21.74 52.5Q796.53-406 766-406H194Zm47.5-294.29q10.5-10.29 10.5-25.5t-10.29-25.71q-10.29-10.5-25.5-10.5t-25.71 10.29q-10.5 10.29-10.5 25.5t10.29 25.71q10.29 10.5 25.5 10.5t25.71-10.29Zm0 246q10.5-10.29 10.5-25.5t-10.29-25.71q-10.29-10.5-25.5-10.5t-25.71 10.29q-10.5 10.29-10.5 25.5t10.29 25.71q10.29 10.5 25.5 10.5t25.71-10.29Zm0 246q10.5-10.29 10.5-25.5t-10.29-25.71q-10.29-10.5-25.5-10.5t-25.71 10.29q-10.5 10.29-10.5 25.5t10.29 25.71q10.29 10.5 25.5 10.5t25.71-10.29Z" />
+    </group>
+</vector>

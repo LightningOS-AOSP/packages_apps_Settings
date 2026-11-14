@@ -1,70 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  Copyright (C) 2025 The Android Open Source Project
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  -->
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-    android:minHeight="72dp"
-    android:gravity="center_vertical"
     android:background="?android:attr/selectableItemBackground"
+    android:baselineAligned="false"
     android:clipToPadding="false"
-    android:baselineAligned="false">
+    android:gravity="center_vertical"
+    android:minHeight="80dp"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp">
 
-    <LinearLayout
-        android:id="@+id/icon_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="40dp"
-        android:minHeight="40dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingStart="16dp">
-
-        <androidx.preference.internal.PreferenceImageView
-            android:id="@android:id/icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleType="centerInside"/>
-
-    </LinearLayout>
+    <View
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/dash_dot" />
 
     <RelativeLayout
         android:id="@+id/text_frame"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:paddingStart="@dimen/homepage_preference_text_padding_start_expressive"
-        android:paddingEnd="16dp">
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingEnd="12dp">
 
         <TextView
             android:id="@android:id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:textAlignment="viewStart"
+            android:ellipsize="marquee"
+            android:fontFamily="sans-serif-medium"
             android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceListItem"
-            android:textColor="@color/settingslib_text_color_primary"
-            android:ellipsize="marquee"/>
+            android:textAlignment="viewStart"
+            android:textColor="@color/dash_title"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@android:id/summary"
@@ -72,60 +43,71 @@
             android:layout_height="wrap_content"
             android:layout_below="@android:id/title"
             android:layout_alignStart="@android:id/title"
-            android:layout_gravity="start"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:textAlignment="viewStart"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/settingslib_text_color_secondary"
-            android:maxLines="4"
-            style="@style/PreferenceSummaryTextStyle"/>
+            android:textColor="@color/dash_summary"
+            android:textSize="14sp" />
     </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/alert_frame"
-        android:minHeight="40dp"
-        android:minWidth="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_gravity="center|end"
-        android:layout_marginEnd="16dp">
+        android:layout_marginEnd="12dp"
+        android:minWidth="40dp"
+        android:minHeight="40dp"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/alert_unnumbered"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:scaleType="fitCenter"
             android:layout_gravity="center"
-            android:src="@drawable/circle"
             android:contentDescription="@null"
-            android:tint="@color/settingslib_materialColorPrimary"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/circle"
+            android:tint="@color/settingslib_materialColorPrimary" />
 
         <FrameLayout
             android:id="@+id/alert_numbered_frame"
-            android:minHeight="24dp"
-            android:minWidth="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:minWidth="24dp"
+            android:minHeight="24dp">
 
             <ImageView
                 android:id="@+id/alert_number_bg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitCenter"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:src="@drawable/circle"
                 android:contentDescription="@null"
-                android:tint="@color/settingslib_materialColorSecondaryContainer"/>
+                android:scaleType="fitCenter"
+                android:src="@drawable/circle" />
 
             <TextView
                 android:id="@+id/alert_number_fg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="@color/settingslib_materialColorOnSecondaryContainer"
-                style="@style/TextAppearance.SettingsLib.TitleMedium" />
+                android:textSize="12sp" />
         </FrameLayout>
-
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/icon_frame"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:gravity="center">
+
+        <androidx.preference.internal.PreferenceImageView
+            android:id="@android:id/icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
 </LinearLayout>

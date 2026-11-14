@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dash_grad_start">#FF862145</color>
+    <color name="dash_grad_mid">#FFCC324B</color>
+    <color name="dash_grad_end">#FFE99BA8</color>
+    <color name="dash_sheet">#FFF5F0F9</color>
+    <color name="dash_search_pill">#FFF9DFE5</color>
+    <color name="dash_search_text">#FF5A1F33</color>
+    <color name="dash_dot">#FFF12346</color>
+    <color name="dash_title">#FF1E1E2E</color>
+    <color name="dash_summary">#FF474362</color>
+    <color name="dash_chip_fill">#29FFFFFF</color>
+</resources>

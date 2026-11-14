@@ -20,19 +20,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/settings_homepage_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/dash_header">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="24dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/dash_header_lockup"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1200:380"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/dash_header_lockup" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/main_content_scrollable_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="162dp"
+        android:background="@drawable/dash_sheet"
+        android:clipToPadding="true"
+        android:clipChildren="true"
+        android:clipToOutline="true"
+        android:outlineProvider="background"
+        android:paddingTop="19dp"
+        android:paddingBottom="24dp"
         app:layout_behavior="com.android.settings.widget.HomepageAppBarScrollingViewBehavior">
 
         <LinearLayout
             android:id="@+id/homepage_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-8dp"
             android:orientation="vertical">
 
             <FrameLayout
@@ -53,7 +85,7 @@
                 android:id="@+id/main_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:animateLayoutChanges="true"/>
+                android:animateLayoutChanges="true" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -74,7 +106,7 @@
             android:paddingBottom="@dimen/settingslib_expressive_space_extrasmall4"
             android:paddingStart="?android:attr/listPreferredItemPaddingStart"
             android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-            android:background="?android:attr/colorBackground">
+            android:background="@android:color/transparent">
 
             <include layout="@layout/search_bar"/>
 
