@@ -158,6 +158,17 @@
     <uses-permission android:name="android.permission.CONTROL_SIM_AUTO_PIN_MANAGEMENT" />
     <uses-permission android:name="android.permission.MANAGE_COMPUTER_CONTROL_CONSENT" />
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="http" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
     <application
             android:name=".SettingsApplication"
             android:label="@string/settings_label"

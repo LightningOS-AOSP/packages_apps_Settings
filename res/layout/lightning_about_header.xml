@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.settings.widget.ChamferFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="128dp"
+    android:paddingStart="16dp"
+    android:paddingTop="18dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="18dp"
+    app:chamferCorner="tr"
+    app:chamferSize="32dp"
+    app:cornerRadius="24dp"
+    app:fillColor="@color/vl_ink">
+
+    <View
+        android:id="@+id/about_header_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.14"
+            android:text="@string/vl_eyebrow"
+            android:textAllCaps="true"
+            android:textColor="@color/vl_on_ink_2"
+            android:textSize="10sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:baselineAligned="false"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/brand_version"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="-0.02"
+                android:maxLines="1"
+                android:textColor="@color/vl_volt"
+                android:textSize="56sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/about_package"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/vl_about_pill_volt"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.05"
+                    android:paddingStart="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="3dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/vl_volt"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/about_build_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/vl_about_pill_ink"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.05"
+                    android:paddingStart="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="3dp"
+                    android:textAllCaps="true"
+                    android:textColor="#E6E1E9"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/about_build_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:fontFamily="monospace"
+            android:maxLines="1"
+            android:textColor="@color/vl_on_ink_2"
+            android:textSize="10.5sp" />
+    </LinearLayout>
+</com.android.settings.widget.ChamferFrameLayout>

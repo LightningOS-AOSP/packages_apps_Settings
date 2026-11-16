@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vl_bg"
+    android:clipChildren="false">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="84dp"
+        android:paddingBottom="24dp">
+
+        <LinearLayout
+            android:id="@+id/info_device"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <LinearLayout
+                android:id="@+id/l_nama_hape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:clipChildren="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxWidth="220dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.15"
+                        android:text="@string/vl_about_this_device"
+                        android:textAllCaps="true"
+                        android:textColor="@color/vl_text_2"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/device_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:autoSizeMaxTextSize="44sp"
+                        android:autoSizeMinTextSize="28sp"
+                        android:autoSizeTextType="uniform"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="-0.02"
+                        android:maxLines="2"
+                        android:textColor="@color/vl_text"
+                        android:textSize="44sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/about_sub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textColor="@color/vl_text_2"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/about_rename"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/vl_about_rename_pill"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_vl_pencil" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/vl_about_rename"
+                            android:textColor="@color/vl_text"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="96dp"
+                    android:layout_height="188dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/vl_phone_frame"
+                    android:clipToOutline="true"
+                    android:outlineProvider="background"
+                    android:rotation="6">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/device_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:background="@drawable/vl_phone_screen"
+                        android:contentDescription="@null"
+                        android:scaleType="centerCrop"
+                        app:shapeAppearanceOverlay="@style/VlPhoneScreen"
+                        app:strokeWidth="0dp" />
+
+                    <View
+                        android:layout_width="28dp"
+                        android:layout_height="6dp"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/vl_phone_notch" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <include
+                android:id="@+id/about_header"
+                layout="@layout/lightning_about_header"
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:layout_marginTop="28dp" />
+
+            <TextView
+                style="@style/VlAboutCaption"
+                android:text="@string/vl_about_specs"
+                android:textColor="@color/vl_zone_specs" />
+
+            <GridLayout
+                android:id="@+id/main_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:useDefaultMargins="false">
+
+                <LinearLayout
+                    android:id="@+id/l_processor"
+                    style="@style/VlAboutTile"
+                    android:layout_margin="4dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_vl_spec_cpu" />
+
+                    <TextView
+                        style="@style/VlAboutTileLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/vl_about_processor" />
+
+                    <TextView
+                        android:id="@+id/processor_info"
+                        style="@style/VlAboutTileValue" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_platform"
+                    style="@style/VlAboutTile"
+                    android:layout_margin="4dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_vl_spec_platform" />
+
+                    <TextView
+                        style="@style/VlAboutTileLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/vl_about_platform" />
+
+                    <TextView
+                        android:id="@+id/chipset_info"
+                        style="@style/VlAboutTileValue" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_memory"
+                    style="@style/VlAboutTile"
+                    android:layout_margin="4dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_vl_spec_ram" />
+
+                    <TextView
+                        style="@style/VlAboutTileLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/vl_about_memory" />
+
+                    <TextView
+                        android:id="@+id/ram_info"
+                        style="@style/VlAboutTileValue" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_screen"
+                    style="@style/VlAboutTile"
+                    android:layout_margin="4dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_vl_spec_screen" />
+
+                    <TextView
+                        style="@style/VlAboutTileLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/vl_about_screen" />
+
+                    <TextView
+                        android:id="@+id/screen_info"
+                        style="@style/VlAboutTileValue" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_battery_spec"
+                    style="@style/VlAboutTile"
+                    android:layout_margin="4dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_vl_spec_battery" />
+
+                    <TextView
+                        style="@style/VlAboutTileLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/vl_about_battery_tile" />
+
+                    <TextView
+                        android:id="@+id/battery_spec"
+                        style="@style/VlAboutTileValue" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_display_spec"
+                    style="@style/VlAboutTile"
+                    android:layout_margin="4dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_vl_spec_display" />
+
+                    <TextView
+                        style="@style/VlAboutTileLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/vl_about_display_tile" />
+
+                    <TextView
+                        android:id="@+id/display_spec"
+                        style="@style/VlAboutTileValue" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/l_camera_spec"
+                    style="@style/VlAboutTile"
+                    android:layout_columnSpan="2"
+                    android:layout_margin="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_vl_spec_camera" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/VlAboutTileLabel"
+                            android:text="@string/vl_about_camera_tile" />
+
+                        <TextView
+                            android:id="@+id/camera_spec"
+                            style="@style/VlAboutTileValue" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/l_maintainer"
+                    style="@style/VlAboutTile"
+                    android:layout_columnSpan="2"
+                    android:layout_margin="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_vl_spec_maintainer" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/VlAboutTileLabel"
+                            android:text="@string/vl_about_maintainer" />
+
+                        <TextView
+                            android:id="@+id/maintainer"
+                            style="@style/VlAboutTileValue"
+                            android:autoSizeMaxTextSize="15sp"
+                            android:autoSizeMinTextSize="9sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:autoSizeTextType="uniform"
+                            android:ellipsize="end"
+                            android:maxLines="1" />
+                    </LinearLayout>
+                </LinearLayout>
+            </GridLayout>
+
+            <TextView
+                style="@style/VlAboutCaption"
+                android:text="@string/vl_about_software"
+                android:textColor="@color/vl_zone_security" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/l_versi_android"
+                    style="@style/VlAboutRow"
+                    android:background="@drawable/vl_about_row_first">
+
+                    <TextView
+                        style="@style/VlAboutRowLabel"
+                        android:text="@string/vl_about_android_version" />
+
+                    <TextView
+                        android:id="@+id/android_version"
+                        style="@style/VlAboutRowValue" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/vl_bg" />
+
+                <LinearLayout
+                    android:id="@+id/l_secure"
+                    style="@style/VlAboutRow"
+                    android:background="@drawable/vl_about_row_middle">
+
+                    <TextView
+                        style="@style/VlAboutRowLabel"
+                        android:text="@string/vl_about_security_patch" />
+
+                    <TextView
+                        android:id="@+id/security_update"
+                        style="@style/VlAboutRowValue" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/vl_bg" />
+
+                <LinearLayout
+                    android:id="@+id/l_kernel"
+                    style="@style/VlAboutRow"
+                    android:background="@drawable/vl_about_row_middle">
+
+                    <TextView
+                        style="@style/VlAboutRowLabel"
+                        android:text="@string/vl_about_kernel" />
+
+                    <TextView
+                        android:id="@+id/kernel_info"
+                        style="@style/VlAboutRowValue"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/vl_bg" />
+
+                <LinearLayout
+                    android:id="@+id/l_build_number"
+                    style="@style/VlAboutRow"
+                    android:background="@drawable/vl_about_row_middle">
+
+                    <TextView
+                        style="@style/VlAboutRowLabel"
+                        android:text="@string/vl_about_build" />
+
+                    <TextView
+                        android:id="@+id/build_number"
+                        style="@style/VlAboutRowValue"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/vl_bg" />
+
+                <LinearLayout
+                    android:id="@+id/l_selinux"
+                    style="@style/VlAboutRow"
+                    android:background="@drawable/vl_about_row_last">
+
+                    <TextView
+                        style="@style/VlAboutRowLabel"
+                        android:text="@string/vl_about_selinux" />
+
+                    <TextView
+                        android:id="@+id/selinux_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/vl_selinux_enforcing"
+                        android:fontFamily="sans-serif-medium"
+                        android:paddingStart="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        android:textColor="@color/vl_on_volt"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/VlAboutCaption"
+                android:text="@string/vl_about_network"
+                android:textColor="@color/vl_zone_system" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/l_base_band"
+                    style="@style/VlAboutRow"
+                    android:background="@drawable/vl_about_row_first">
+
+                    <TextView
+                        style="@style/VlAboutRowLabel"
+                        android:text="@string/vl_about_baseband" />
+
+                    <TextView
+                        android:id="@+id/base_band"
+                        style="@style/VlAboutRowValue"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/vl_bg" />
+
+                <LinearLayout
+                    android:id="@+id/l_ip_addres"
+                    style="@style/VlAboutRow"
+                    android:background="@drawable/vl_about_row_middle">
+
+                    <TextView
+                        style="@style/VlAboutRowLabel"
+                        android:text="@string/vl_about_ip" />
+
+                    <TextView
+                        android:id="@+id/ip_address"
+                        style="@style/VlAboutRowValue"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/vl_bg" />
+
+                <LinearLayout
+                    android:id="@+id/l_mac_address"
+                    style="@style/VlAboutRow"
+                    android:background="@drawable/vl_about_row_middle">
+
+                    <TextView
+                        style="@style/VlAboutRowLabel"
+                        android:text="@string/vl_about_mac" />
+
+                    <TextView
+                        android:id="@+id/mac_address"
+                        style="@style/VlAboutRowValue"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/vl_bg" />
+
+                <LinearLayout
+                    android:id="@+id/l_uptime_info"
+                    style="@style/VlAboutRow"
+                    android:background="@drawable/vl_about_row_last">
+
+                    <TextView
+                        style="@style/VlAboutRowLabel"
+                        android:text="@string/vl_about_uptime" />
+
+                    <TextView
+                        android:id="@+id/uptime"
+                        style="@style/VlAboutRowValue" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/l_more_info"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/vl_about_tonal_row"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:id="@+id/more"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/vl_about_more"
+                    android:textColor="@color/vl_text"
+                    android:textSize="15sp"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_vl_chevron_right" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="about_blue_circle">#A1C9FF</color>
+    <color name="about_blue_glyph">#04409F</color>
+    <color name="about_sky_circle">#67D4FF</color>
+    <color name="about_sky_glyph">#004D68</color>
+    <color name="about_cyan_circle">#60D5F3</color>
+    <color name="about_cyan_glyph">#004E5D</color>
+    <color name="about_pink_circle">#FFAEE4</color>
+    <color name="about_pink_glyph">#8D0053</color>
+    <color name="about_orange_circle">#FFB683</color>
+    <color name="about_orange_glyph">#753403</color>
+    <color name="about_yellow_circle">#FCBD00</color>
+    <color name="about_yellow_glyph">#6D3A01</color>
+    <color name="about_green_circle">#80DA88</color>
+    <color name="about_green_glyph">#00522C</color>
+    <color name="about_gray_circle">#C7C7C7</color>
+    <color name="about_gray_glyph">#474747</color>
+    <color name="about_red_circle">#FFB3AE</color>
+    <color name="about_red_glyph">#8A1A16</color>
+    <color name="about_purple_circle">#D9BAFD</color>
+    <color name="about_purple_glyph">#5629A4</color>
+</resources>

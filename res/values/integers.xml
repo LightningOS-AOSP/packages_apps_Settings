@@ -47,4 +47,7 @@
     <integer name="sim_label_max_length">50</integer>
 
     <integer name="mirror_x_scale">1</integer>
+
+    <integer name="gridCount">2</integer>
+    <integer name="gridInfo">1</integer>
 </resources>

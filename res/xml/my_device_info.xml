@@ -28,7 +28,7 @@
         android:order="-999"
         android:selectable="false" />
 
-    <PreferenceCategory
+    <com.android.settings.widget.VlPreferenceCategory
         android:key="basic_info_category"
         android:selectable="false"
         android:title="@string/my_device_info_basic_info_category_title">
@@ -60,9 +60,9 @@
             settings:isPreferenceVisible="@bool/config_show_sim_info"
             settings:controller="com.android.settings.deviceinfo.PhoneNumberPreferenceController"
             settings:enableCopying="true"/>
-    </PreferenceCategory>
+    </com.android.settings.widget.VlPreferenceCategory>
 
-    <PreferenceCategory
+    <com.android.settings.widget.VlPreferenceCategory
         android:key="legal_category"
         android:title="@string/my_device_info_legal_category_title">
 
@@ -87,9 +87,9 @@
             android:key="safety_info"
             android:order="18"
             android:title="@string/safety_and_regulatory_info"/>
-    </PreferenceCategory>
+    </com.android.settings.widget.VlPreferenceCategory>
 
-    <PreferenceCategory
+    <com.android.settings.widget.VlPreferenceCategory
         android:key="device_detail_category"
         android:selectable="false"
         android:title="@string/my_device_info_device_details_category_title">
@@ -147,15 +147,6 @@
             settings:isPreferenceVisible="@bool/config_show_sim_info"
             settings:controller="com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController"/>
 
-        <!-- Android version -->
-        <Preference
-            android:key="firmware_version"
-            android:order="42"
-            android:title="@string/firmware_version"
-            android:summary="@string/summary_placeholder"
-            android:fragment="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionSettings"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionPreferenceController"/>
-
         <!-- Build number -->
         <Preference
             android:key="build_number"
@@ -180,9 +171,9 @@
             android:title="@string/status_sleep_time"
             android:summary="@string/summary_placeholder"
             android:selectable="false"/>
-    </PreferenceCategory>
+    </com.android.settings.widget.VlPreferenceCategory>
 
-    <PreferenceCategory
+    <com.android.settings.widget.VlPreferenceCategory
         android:key="device_identifiers_category"
         android:title="@string/my_device_info_device_identifiers_category_title">
 
@@ -244,6 +235,6 @@
             android:order="52"
             android:title="@string/fcc_equipment_id"
             android:summary="@string/summary_placeholder"/>
-    </PreferenceCategory>
+    </com.android.settings.widget.VlPreferenceCategory>
 
 </PreferenceScreen>

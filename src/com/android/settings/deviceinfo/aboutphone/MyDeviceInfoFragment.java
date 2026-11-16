@@ -114,6 +114,12 @@ public class MyDeviceInfoFragment extends DashboardFragment
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.setBackgroundColor(requireContext().getColor(R.color.vl_bg));
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
     }
