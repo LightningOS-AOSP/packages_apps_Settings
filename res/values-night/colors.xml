@@ -124,5 +124,6 @@
     <color name="sc_materialColorSurfaceContainer">@android:color/system_surface_container_dark</color>
     <color name="sc_materialColorOutline">@android:color/system_outline_dark</color>
     <color name="sc_materialColorOutlineVariant">@android:color/system_outline_variant_dark</color>
+    <color name="homepage_thunderbolt_background">#f5c244</color>
 </resources>
 
