@@ -6479,10 +6479,12 @@
                   android:icon="@drawable/hub_ic_system"
                   android:label="@string/hub_title"
                   android:parentActivityName="com.android.settings"
-                  android:theme="@style/Theme.Settings.NoActionBar">
+                  android:theme="@style/Theme.Lightning.Control">
             <intent-filter>
                 <action android:name="com.android.settings.action.SETTINGS"/>
             </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                       android:value="com.android.settings.category.ia.system"/>
             <meta-data android:name="com.android.settings.summary"
                        android:resource="@string/hub_title"/>
         </activity>
