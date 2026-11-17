@@ -156,10 +156,15 @@ android_library {
         "ax_compose",
     ],
 
+    target: {
+        android: {
+            static_libs: ["tflite_support_java"],
+        },
+    },
+
     plugins: [
         "SettingsLibMetadata-processor",
         "androidx.room_room-compiler-plugin",
-        "tflite_support_java",
     ],
     kotlin_plugins: ["kotlin-parcelize-compiler-plugin"],
 
