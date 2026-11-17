@@ -56,8 +56,8 @@
         android:summary="@string/thunderbolt_summary_title"
         android:icon="@drawable/ic_settings_thunderbolt"
         android:order="-5"
-        android:fragment="com.lightning.thunderbolt.ThunderboltDashboard"
-        settings:controller="com.lightning.thunderbolt.TopLevelThunderboltEntryPreferenceController" />
+        android:fragment="com.lightning.thunderbolt.ThunderboltSettings"
+        settings:controller="com.lightning.thunderbolt.TopLevelThunderboltSettingsPreferenceController" />
     </PreferenceCategory>
 
     <PreferenceCategory

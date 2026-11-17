@@ -88,7 +88,6 @@ import com.android.settings.safetycenter.SafetyCenterManagerWrapper;
 import com.android.settingslib.Utils;
 import com.android.settingslib.core.lifecycle.HideNonSystemOverlayMixin;
 import com.android.settingslib.widget.SettingsThemeHelper;
-import com.lightning.control.ControlCenterActivity;
 
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
@@ -450,7 +449,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
             return;
         }
         card.setOnClickListener(v -> {
-            final Intent intent = new Intent(this, ControlCenterActivity.class);
+            final Intent intent = new Intent(this, Settings.ThunderboltSettingsActivity.class);
             startActivity(intent);
         });
     }

@@ -224,7 +224,7 @@ import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSettings2;
 import com.android.settings.wifi.tether.WifiTetherSettings;
 
-import com.lightning.thunderbolt.ThunderboltDashboard;
+import com.lightning.thunderbolt.ThunderboltSettings;
 
 public class SettingsGateway {
 
@@ -436,7 +436,7 @@ public class SettingsGateway {
             SummarizationPreferenceFragment.class.getName(),
             SafetyCenterFragment.class.getName(),
             SafetyCenterQsFragment.class.getName(),
-            ThunderboltDashboard.class.getName(),
+            ThunderboltSettings.class.getName(),
             PrivateDnsSettings.class.getName(),
     };
 

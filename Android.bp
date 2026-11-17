@@ -235,6 +235,7 @@ android_app {
     uses_libs: ["org.apache.http.legacy"],
     use_resource_processor: true,
     resource_dirs: [],
+    asset_dirs: ["Thunderbolt/assets"],
     flags_packages: [
         "android.app.flags-aconfig",
     ],
