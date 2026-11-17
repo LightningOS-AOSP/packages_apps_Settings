@@ -159,6 +159,7 @@ android_library {
     plugins: [
         "SettingsLibMetadata-processor",
         "androidx.room_room-compiler-plugin",
+        "tflite_support_java",
     ],
     kotlin_plugins: ["kotlin-parcelize-compiler-plugin"],
 
@@ -236,6 +237,8 @@ android_app {
     use_resource_processor: true,
     resource_dirs: [],
     asset_dirs: ["Thunderbolt/assets"],
+    jni_libs: ["libtensorflowlite_jni"],
+    use_embedded_native_libs: true,
     flags_packages: [
         "android.app.flags-aconfig",
     ],
