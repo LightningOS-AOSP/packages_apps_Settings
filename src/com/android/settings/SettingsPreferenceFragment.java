@@ -65,6 +65,7 @@ import com.android.settingslib.search.Indexable;
 import com.android.settingslib.widget.LayoutPreference;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.lightning.thunderbolt.ThunderboltSubPageStyler;
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
 import java.util.UUID;
@@ -147,6 +148,9 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
 
     @Override
     public void onCreate(Bundle icicle) {
+        if (isThunderboltPage()) {
+            ThunderboltSubPageStyler.applyOverlay(requireContext(), getClass().getName());
+        }
         super.onCreate(icicle);
 
         mDevicePolicyManager = getContext().getSystemService(DevicePolicyManager.class);
@@ -169,7 +173,16 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
         final View root = super.onCreateView(inflater, container, savedInstanceState);
         mPinnedHeaderFrameLayout = root.findViewById(R.id.pinned_header);
         mAppBarLayout = getActivity().findViewById(R.id.app_bar);
+        if (isThunderboltPage()) {
+            ThunderboltSubPageStyler.attach(this);
+        }
         return root;
+    }
+
+    private boolean isThunderboltPage() {
+        final String name = getClass().getName();
+        return name.startsWith("com.lightning.thunderbolt.")
+                && !name.equals("com.lightning.thunderbolt.ThunderboltSettings");
     }
 
     @NonNull
